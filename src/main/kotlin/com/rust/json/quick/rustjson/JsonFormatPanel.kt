@@ -23,9 +23,11 @@ import javax.swing.JPanel
 /**
  * format editor
  */
-class JsonFormatPanel(private val event: AnActionEvent,
-                      private val popupWidth: Int,
-                      private val popupHeight: Int) : JPanel() {
+class JsonFormatPanel(
+    private val event: AnActionEvent,
+    private val popupWidth: Int,
+    private val popupHeight: Int
+) : JPanel() {
 
     init {
         isEnabled = true
@@ -48,11 +50,11 @@ class JsonFormatPanel(private val event: AnActionEvent,
         val vBox = JPanel()
         vBox.layout = BoxLayout(vBox, BoxLayout.Y_AXIS)
 
-        // 创建多个checkbox
+        // create format button
         val serdeCheckbox = JCheckBox("serde json")
         val fieldCheckbox = JCheckBox("public field")
 
-        // 创建按钮
+        // create format button
         val formatButton = JButton("Format")
         val okButton = JButton("OK")
 
@@ -78,25 +80,29 @@ class JsonFormatPanel(private val event: AnActionEvent,
 //                return@addActionListener
 //            }
 
-            // 获取当前编辑的文件
+            // get current file
             val file: PsiFile = event.getData(CommonDataKeys.PSI_FILE) ?: return@addActionListener
-            // 在写入命令的上下文中执行代码插入操作
+            // insert code in write command context
+            // runWriteCommandAction: https://www.jetbrains.org/intellij/sdk/docs/basics/architectural_overview/general_threading_rules.html
             WriteCommandAction.runWriteCommandAction(event.project!!, Runnable {
 
                 val result = runCatching {
                     val jsonString = editor.text
-                    val gson = GsonBuilder().setPrettyPrinting().setLenient().create()
-                    val jsonElement: JsonElement = JsonParser.parseString(jsonString)
+//                    val gson = GsonBuilder().setPrettyPrinting().setLenient().create()
+//                    val jsonElement: JsonElement = JsonParser.parseString(jsonString)
 
-                    // 解析
-                    parseJson2RustStruct(jsonElement)
+                    // parse json
+                    val list = JsonParseUtil.parse(jsonString)
 
                     val newFile = PsiFileFactory.getInstance(event.project)
-                            .createFileFromText(PlainTextLanguage.INSTANCE, file.text + "\n" + "System.out.println(\"Hello, World!\")")
-                    // 获取workspace当前文件的编辑器
+                        .createFileFromText(
+                            PlainTextLanguage.INSTANCE,
+                            file.text + "\n" + "System.out.println(\"Hello, World!\")"
+                        )
+                    // get workspace current file editor
                     val editor = event.getData<Editor>(CommonDataKeys.EDITOR)
-                            ?: return@Runnable
-                    // 刷新workspace编辑器
+                        ?: return@Runnable
+                    // refresh workspace editor
                     editor.document.setText(newFile.text)
                     editor.selectionModel.removeSelection()
                     editor.caretModel.moveToOffset(0)
@@ -106,7 +112,7 @@ class JsonFormatPanel(private val event: AnActionEvent,
             })
         }
 
-        // 将checkbox添加到面板中
+        // add checkbox to panel
         vBox.add(serdeCheckbox)
         vBox.add(fieldCheckbox)
         vBox.add(formatButton)
@@ -114,53 +120,4 @@ class JsonFormatPanel(private val event: AnActionEvent,
         return vBox
     }
 
-    private fun parseJson2RustStruct(jsonElement: JsonElement) {
-//        if (jsonElement is JsonPrimitive) {
-//            val jsonPrimitive = jsonElement.asJsonPrimitive
-//            if (jsonPrimitive.isString) {
-//                println("value: ${jsonPrimitive.asString}")
-//            } else if (jsonPrimitive.isNumber) {
-//                println("value: ${jsonPrimitive.asNumber}")
-//            } else if (jsonPrimitive.isBoolean) {
-//                println("value: ${jsonPrimitive.asBoolean}")
-//            }
-//            return
-//        }
-
-//        {
-//            name: rust,
-//            age: 18,
-//            isMale: true,
-//            address: {
-//                country: China,
-//                province: GuangDong,
-//                city: ShenZhen
-//            },
-//            hobbies: []
-//         }
-
-        val jsonObject = jsonElement as JsonObject
-        val entrySet = jsonObject.entrySet()
-        for (entry in entrySet) {
-            val key = entry.key
-            val value = entry.value
-            if (value.isJsonPrimitive) {
-                val jsonPrimitive = value.asJsonPrimitive
-                if (jsonPrimitive.isString) {
-                    println("key: $key, value: ${jsonPrimitive.asString}")
-                } else if (jsonPrimitive.isNumber) {
-                    println("key: $key, value: ${jsonPrimitive.asNumber}")
-                } else if (jsonPrimitive.isBoolean) {
-                    println("key: $key, value: ${jsonPrimitive.asBoolean}")
-                }
-            } else if (value.isJsonObject) {
-                parseJson2RustStruct(value)
-            } else if (value.isJsonArray) {
-                val jsonArray = value.asJsonArray
-                for (jsonTempElement in jsonArray) {
-                    parseJson2RustStruct(jsonTempElement)
-                }
-            }
-        }
-    }
 }

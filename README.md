@@ -17,6 +17,8 @@ Convert Json to Rust Struct.
 4. Press `Alt + Q`  to open the window or right click to open the context menu and select `Generate Rust Struct`
 5. Input Json text and press `OK`
 
+
+
 ## License
 
 AGPLv3

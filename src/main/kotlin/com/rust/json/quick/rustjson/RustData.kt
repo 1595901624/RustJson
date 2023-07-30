@@ -1,11 +1,30 @@
 package com.rust.json.quick.rustjson
 
 data class RustStruct(
+    /**
+     * struct name
+     */
     val name: String = "",
+    /**
+     * struct fields
+     */
     val fields: MutableList<RustField> = mutableListOf(),
+    /**
+     * serde derive
+     */
     val serde: Boolean = true,
+    /**
+     * public struct
+     */
     val public: Boolean = true,
-    val option: Boolean = true
+    /**
+     * add option
+     */
+    val option: Boolean = true,
+    /**
+     * debug derive
+     */
+    val debug: Boolean = true
 ) {
 
     /**
@@ -13,9 +32,16 @@ data class RustStruct(
      */
     fun toRustStructString(): String {
         val stringBuilder = StringBuilder()
-        // add serde
-        if (serde) {
-            stringBuilder.append("#[derive(Serialize, Deserialize)]\n")
+        // add derive
+        if (serde && debug) {
+            stringBuilder.append("#[derive(Serialize, Deserialize, Debug)]\n")
+        } else {
+            if (serde) {
+                stringBuilder.append("#[derive(Serialize, Deserialize)]\n")
+            }
+            if (debug) {
+                stringBuilder.append("#[derive(Debug)]\n")
+            }
         }
         // add public
         if (public) {
@@ -24,7 +50,7 @@ data class RustStruct(
         // add struct name
         stringBuilder.append("struct $name {\n")
         // add fields
-        fields.forEach {
+        fields.forEachIndexed { index, it ->
             stringBuilder.append("\t")
             // add serde
             if (serde) {
@@ -44,7 +70,9 @@ data class RustStruct(
             // add field type
             stringBuilder.append(it.type.type)
             // add object name
-            if (it.objectName != null) {
+            if (it.type == RustType.Vec) {
+                stringBuilder.append("<${it.objectName}>")
+            } else if (it.type == RustType.Obj) {
                 stringBuilder.append("${it.objectName}")
             }
             // add option
@@ -52,6 +80,10 @@ data class RustStruct(
                 stringBuilder.append(">")
             }
             stringBuilder.append(",\n")
+            // add a blank line
+            if (index != fields.size - 1) {
+                stringBuilder.append("\n")
+            }
         }
         // add end
         stringBuilder.append("}\n")
