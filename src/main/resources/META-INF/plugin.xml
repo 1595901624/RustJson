@@ -29,7 +29,7 @@
     </extensions>
     <actions>
         <action id="com.rust.json.quick.rustjson.format" class="com.rust.json.quick.rustjson.JsonFormatAction"
-                text="JsonFormat" description="format a json">
+                text="Generate Rust Struct" description="format a json">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
             <keyboard-shortcut keymap="$default" first-keystroke="alt Q"/>
         </action>
