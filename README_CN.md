@@ -1,12 +1,15 @@
 # RustJson
 
-<img src="https://img.shields.io/badge/当前状态-developing-green.svg?style=flat" />
-<img src="https://img.shields.io/badge/最新版本-0.0.2.Alpha-blue.svg?style=flat" />
+<div>
+    <img src="https://img.shields.io/badge/当前状态-developing-green.svg?style=flat" />
+    <img src="https://img.shields.io/badge/最新版本-0.0.4.Alpha-blue.svg?style=flat" />
+</div>
 
 
-开发中...
+
 开发中...  
-开发中...
+开发中...    
+开发中...  
 
 一个 Json 转 Rust Struct 的 Idea 插件（开发中）
 

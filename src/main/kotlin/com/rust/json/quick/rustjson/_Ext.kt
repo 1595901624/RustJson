@@ -1,5 +1,9 @@
 package com.rust.json.quick.rustjson
 
+import com.google.gson.GsonBuilder
+import com.google.gson.JsonElement
+import com.google.gson.JsonParser
+
 /**
  * Capitalize the first letter of a string
  */
@@ -32,4 +36,16 @@ fun String.convertCamelToSnakeCase(): String {
         }
     }
     return converted.toString()
+}
+
+/**
+ * format json
+ */
+fun String.formatJson(): String {
+    runCatching {
+        val gson = GsonBuilder().setPrettyPrinting().setLenient().create()
+        val jsonElement: JsonElement = JsonParser.parseString(this)
+        return gson.toJson(jsonElement)
+    }
+    return this
 }

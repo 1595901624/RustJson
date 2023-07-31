@@ -2,12 +2,14 @@
 
 <div>
     <img src="https://img.shields.io/badge/status-developing-green.svg?style=flat" />
-    <img src="https://img.shields.io/badge/latest%20version-0.0.3.Alpha-blue.svg?style=flat" />
+    <img src="https://img.shields.io/badge/latest%20version-0.0.4.Alpha-blue.svg?style=flat" />
 </div>
+
+
 
 Developing...  
 Developing...  
-Developing...
+Developing...  
 
 A Json to Rust Struct Idea Plugin (Developing)
 
@@ -25,7 +27,7 @@ The plugin is still developing...
 1. Clone and Build the project
 2. Install the plugin from local disk
 3. Open a json file
-4. Press `Alt + Q`  to open the window or right click to open the context menu and select `Generate Rust Struct`
+4. Press `Alt + W`  to open the window or right click to open the context menu and select `Generate Rust Struct`
 5. Input Json text and press `OK`
 
 ## Give a Cup of Coffee
@@ -56,4 +58,3 @@ code below.
 ## License
 
 AGPLv3
-

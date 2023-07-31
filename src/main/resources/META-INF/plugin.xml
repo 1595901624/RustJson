@@ -28,7 +28,7 @@
         <li>Clone and Build the project</li>
         <li>Install the plugin from local disk</li>
         <li>Open a json file</li>
-        <li>Press <code>Alt + Q</code> to open the window or right click to open the context menu and select <code>Generate Rust Struct</code></li>
+        <li>Press <code>Alt + W</code> to open the window or right click to open the context menu and select <code>Generate Rust Struct</code></li>
         <li>Input Json text and press <code>OK</code></li>
     </ol>
     <h2>Feedback</h2>

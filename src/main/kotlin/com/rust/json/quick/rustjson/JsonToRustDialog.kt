@@ -23,6 +23,10 @@ class JsonToRustDialog(
     private var buttonCancel: JButton? = null
     private var buttonFormat: JButton? = null
     private var jsonEditorTextArea: JTextArea? = null
+    private var checkBoxDebug: JCheckBox? = null
+    private var checkBoxSerde: JCheckBox? = null
+    private var checkBoxPublic: JCheckBox? = null
+    private var checkBoxOption: JCheckBox? = null
 
     init {
         // set dialog title
@@ -77,11 +81,15 @@ class JsonToRustDialog(
 
             runCatching {
                 val jsonString = jsonEditorTextArea!!.text
-//                    val gson = GsonBuilder().setPrettyPrinting().setLenient().create()
-//                    val jsonElement: JsonElement = JsonParser.parseString(jsonString)
 
                 // parse json
-                val list = JsonParseUtil.parse(jsonString)
+                val parseConfig = ParseConfig(
+                    serdeDerive = checkBoxSerde!!.isSelected,
+                    debugDerive = checkBoxDebug!!.isSelected,
+                    publicStruct = checkBoxPublic!!.isSelected,
+                    option = checkBoxOption!!.isSelected
+                )
+                val list = JsonParseUtil(parseConfig).parse(jsonString)
                 // generate rust code
                 val codeStringBuilder = StringBuilder()
                 for (rustStruct in list) {
@@ -114,7 +122,7 @@ class JsonToRustDialog(
     private fun onFormat() {
         val json = jsonEditorTextArea?.text
         if (!json.isNullOrEmpty()) {
-            val formatJson = JsonParseUtil.format(json)
+            val formatJson = json.formatJson()
             jsonEditorTextArea?.text = formatJson
         }
     }
