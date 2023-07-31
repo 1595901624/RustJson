@@ -8,15 +8,34 @@
     <name>RustJson</name>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor email="support@yourcompany.com" url="https://www.yourcompany.com">YourCompany</vendor>
+    <vendor email="luhaoyu@live.com" url="https://1595901624.github.io/">@Cloris</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+
     <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
-  ]]></description>
+    <h1>Rust Json - Alpha Version (Preview)</h1>
+    <em>A Json to Rust Struct Idea Plugin. The plugin is still developing...</em><br>
+    <h2>Features</h2>
+    <ul>
+        <li>Support <code>debug</code> derive</li>
+        <li>Support <code>serde</code> derive</li>
+        <li>Support <code>serde</code> rename</li>
+    </ul>
+    <h2>Usage</h2>
+    <ol>
+        <li>Clone and Build the project</li>
+        <li>Install the plugin from local disk</li>
+        <li>Open a json file</li>
+        <li>Press <code>Alt + Q</code> to open the window or right click to open the context menu and select <code>Generate Rust Struct</code></li>
+        <li>Input Json text and press <code>OK</code></li>
+    </ol>
+    <h2>Feedback</h2>
+    <p>If you have any questions, please submit an issue on <a href="https://github.com/1595901624/RustJson">Github</a>. </p>
+    <h2>License</h2>
+    <p>AGPLv3</p>
+]]></description>
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->

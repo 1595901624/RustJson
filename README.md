@@ -25,12 +25,11 @@ The plugin is still developing...
 5. Input Json text and press `OK`
 
 ## Give a Cup of Coffee
+And you can also give me a cup of coffee by scanning the QR code below.
 
 | Paypal                                                  | Wechat                                     | Alipay/AlipayHK                            |
 |---------------------------------------------------------|--------------------------------------------|--------------------------------------------|
 | [**`Paypal`**](https://www.paypal.com/paypalme/haoyu94) | <img src="demo/wechat.jpg" height="240" /> | <img src="demo/alipay.jpg" height="240" /> |
-
-And you can also give me a cup of coffee by scanning the QR code below.
 
 ## For Chinese
 
