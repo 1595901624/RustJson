@@ -18,7 +18,7 @@ The plugin is still developing...
 
 ## Usage
 
-1. Build the project
+1. Clone and Build the project
 2. Install the plugin from local disk
 3. Open a json file
 4. Press `Alt + Q`  to open the window or right click to open the context menu and select `Generate Rust Struct`

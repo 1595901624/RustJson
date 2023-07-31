@@ -76,9 +76,9 @@ class JsonFormatPanel(
 
         // ok button
         okButton.addActionListener {
-//            if (editor.text.isEmpty()) {
-//                return@addActionListener
-//            }
+            if (editor.text.isEmpty()) {
+                return@addActionListener
+            }
 
             // get current file
             val file: PsiFile = event.getData(CommonDataKeys.PSI_FILE) ?: return@addActionListener
@@ -93,11 +93,17 @@ class JsonFormatPanel(
 
                     // parse json
                     val list = JsonParseUtil.parse(jsonString)
+                    // generate rust code
+                    val codeStringBuilder = StringBuilder()
+                    for (rustStruct in list) {
+                        codeStringBuilder.append(rustStruct.toRustStructString())
+                    }
 
+                    // insert code to file
                     val newFile = PsiFileFactory.getInstance(event.project)
                         .createFileFromText(
                             PlainTextLanguage.INSTANCE,
-                            file.text + "\n" + "System.out.println(\"Hello, World!\")"
+                            file.text + "\n" + codeStringBuilder.toString()
                         )
                     // get workspace current file editor
                     val editor = event.getData<Editor>(CommonDataKeys.EDITOR)
@@ -108,7 +114,7 @@ class JsonFormatPanel(
                     editor.caretModel.moveToOffset(0)
                 }
 
-                System.err.println("result: $result")
+//                System.err.println("result: $result")
             })
         }
 

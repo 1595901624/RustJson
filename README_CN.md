@@ -18,7 +18,7 @@
 
 ## 使用方法
 
-1. 构建项目
+1. 克隆并构建项目
 2. 从本地磁盘安装插件
 3. 打开一个 json 文件
 4. 按 `Alt + Q` 打开窗口或右键单击打开上下文菜单并选择 `Generate Rust Struct`
@@ -32,7 +32,7 @@
 
 ## For English
 
-[中文文档](README.md)
+[English doc](README.md)
 
 ## 开发者
 
