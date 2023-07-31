@@ -1,5 +1,7 @@
 # RustJson
-<img src="https://img.shields.io/badge/latest%20version-developing-blue.svg?style=flat" />
+
+<img src="https://img.shields.io/badge/status-developing-green.svg?style=flat" />
+<img src="https://img.shields.io/badge/latest%20version-0.0.2.Alpha-blue.svg?style=flat" />
 
 Developing...  
 Developing...  
@@ -25,6 +27,7 @@ The plugin is still developing...
 5. Input Json text and press `OK`
 
 ## Give a Cup of Coffee
+
 And you can also give me a cup of coffee by scanning the QR code below.
 
 | Paypal                                                  | Wechat                                     | Alipay/AlipayHK                            |

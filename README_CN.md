@@ -1,6 +1,8 @@
 # RustJson
 
-<img src="https://img.shields.io/badge/最新版本-开发中-blue.svg?style=flat" />
+<img src="https://img.shields.io/badge/当前状态-developing-green.svg?style=flat" />
+<img src="https://img.shields.io/badge/最新版本-0.0.2.Alpha-blue.svg?style=flat" />
+
 
 开发中...
 开发中...  
