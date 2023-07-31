@@ -86,7 +86,7 @@ class JsonFormatPanel(
             // runWriteCommandAction: https://www.jetbrains.org/intellij/sdk/docs/basics/architectural_overview/general_threading_rules.html
             WriteCommandAction.runWriteCommandAction(event.project!!, Runnable {
 
-                val result = runCatching {
+                runCatching {
                     val jsonString = editor.text
 //                    val gson = GsonBuilder().setPrettyPrinting().setLenient().create()
 //                    val jsonElement: JsonElement = JsonParser.parseString(jsonString)
@@ -106,12 +106,12 @@ class JsonFormatPanel(
                             file.text + "\n" + codeStringBuilder.toString()
                         )
                     // get workspace current file editor
-                    val editor = event.getData<Editor>(CommonDataKeys.EDITOR)
+                    val currentEditor = event.getData<Editor>(CommonDataKeys.EDITOR)
                         ?: return@Runnable
                     // refresh workspace editor
-                    editor.document.setText(newFile.text)
-                    editor.selectionModel.removeSelection()
-                    editor.caretModel.moveToOffset(0)
+                    currentEditor.document.setText(newFile.text)
+                    currentEditor.selectionModel.removeSelection()
+                    currentEditor.caretModel.moveToOffset(0)
                 }
 
 //                System.err.println("result: $result")
