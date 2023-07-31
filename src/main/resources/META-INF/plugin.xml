@@ -50,7 +50,7 @@
         <action id="com.rust.json.quick.rustjson.format" class="com.rust.json.quick.rustjson.JsonFormatAction"
                 text="Generate Rust Struct" description="format a json">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-            <keyboard-shortcut keymap="$default" first-keystroke="alt Q"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="alt W"/>
         </action>
     </actions>
 </idea-plugin>

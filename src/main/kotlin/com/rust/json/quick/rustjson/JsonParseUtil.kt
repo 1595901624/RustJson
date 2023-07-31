@@ -4,6 +4,21 @@ import com.google.gson.*
 
 object JsonParseUtil {
 
+    /**
+     * format json
+     */
+    fun format(json: String): String {
+        runCatching {
+            val gson = GsonBuilder().setPrettyPrinting().setLenient().create()
+            val jsonElement: JsonElement = JsonParser.parseString(json)
+            return gson.toJson(jsonElement)
+        }
+        return json
+    }
+
+    /**
+     * parse json
+     */
     fun parse(json: String): List<RustStruct> {
         val list = mutableListOf<RustStruct>()
         val jsonElement = JsonParser.parseString(json)

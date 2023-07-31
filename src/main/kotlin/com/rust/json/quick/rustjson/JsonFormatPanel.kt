@@ -6,6 +6,9 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.google.gson.JsonPrimitive
 import com.google.gson.stream.JsonReader
+import com.intellij.ide.plugins.newui.ColorButton
+import com.intellij.ide.plugins.newui.InstallButton
+import com.intellij.ide.plugins.newui.UpdateButton
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.command.WriteCommandAction
@@ -13,6 +16,8 @@ import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.fileTypes.PlainTextLanguage
 import com.intellij.psi.*
 import com.intellij.ui.EditorTextField
+import com.intellij.ui.JBColor
+import java.awt.Color
 import java.awt.Dimension
 import javax.swing.BoxLayout
 import javax.swing.JButton
@@ -22,7 +27,9 @@ import javax.swing.JPanel
 
 /**
  * format editor
+ *
  */
+@Deprecated("use JsonToRustDialog")
 class JsonFormatPanel(
     private val event: AnActionEvent,
     private val popupWidth: Int,
@@ -56,7 +63,12 @@ class JsonFormatPanel(
 
         // create format button
         val formatButton = JButton("Format")
-        val okButton = JButton("OK")
+        val okButton = UpdateButton().apply {
+            text = "OK"
+        }
+        val cancelButton = InstallButton(false).apply {
+            text = "Cancel"
+        }
 
         formatButton.addActionListener {
             if (editor.text.isEmpty()) {
@@ -116,6 +128,11 @@ class JsonFormatPanel(
 
 //                System.err.println("result: $result")
             })
+        }
+
+        // cancel button
+        cancelButton.addActionListener {
+
         }
 
         // add checkbox to panel

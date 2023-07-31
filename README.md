@@ -1,7 +1,9 @@
 # RustJson
 
-<img src="https://img.shields.io/badge/status-developing-green.svg?style=flat" />
-<img src="https://img.shields.io/badge/latest%20version-0.0.2.Alpha-blue.svg?style=flat" />
+<div>
+    <img src="https://img.shields.io/badge/status-developing-green.svg?style=flat" />
+    <img src="https://img.shields.io/badge/latest%20version-0.0.3.Alpha-blue.svg?style=flat" />
+</div>
 
 Developing...  
 Developing...  
