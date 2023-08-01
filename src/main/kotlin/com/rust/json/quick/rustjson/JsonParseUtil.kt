@@ -178,32 +178,32 @@ class JsonParseUtil(
             if (jsonTempElement.isJsonPrimitive) {
                 // if value is json primitive
                 val jsonPrimitive = jsonTempElement.asJsonPrimitive
-                parseJsonPrimitive(keyName, jsonPrimitive, rustStruct)
-//                if (jsonPrimitive.isString) {
-//                    val rustField = RustField(
-//                        name = keyName,
-//                        type = RustType.Vec,
-//                        public = true,
-//                        objectName = "String"
-//                    )
-//                    rustStruct.fields.add(rustField)
-//                } else if (jsonPrimitive.isNumber) {
-//                    val rustField = RustField(
-//                        name = keyName,
-//                        type = RustType.Vec,
-//                        public = true,
-//                        objectName = "i32"
-//                    )
-//                    rustStruct.fields.add(rustField)
-//                } else if (jsonPrimitive.isBoolean) {
-//                    val rustField = RustField(
-//                        name = keyName,
-//                        type = RustType.Vec,
-//                        public = true,
-//                        objectName = "bool"
-//                    )
-//                    rustStruct.fields.add(rustField)
-//                }
+//                parseJsonPrimitive(keyName, jsonPrimitive, rustStruct)
+                if (jsonPrimitive.isString) {
+                    val rustField = RustField(
+                        name = keyName,
+                        type = RustType.Vec,
+                        public = true,
+                        objectName = "String"
+                    )
+                    rustStruct.fields.add(rustField)
+                } else if (jsonPrimitive.isNumber) {
+                    val rustField = RustField(
+                        name = keyName,
+                        type = RustType.Vec,
+                        public = true,
+                        objectName = "i32"
+                    )
+                    rustStruct.fields.add(rustField)
+                } else if (jsonPrimitive.isBoolean) {
+                    val rustField = RustField(
+                        name = keyName,
+                        type = RustType.Vec,
+                        public = true,
+                        objectName = "bool"
+                    )
+                    rustStruct.fields.add(rustField)
+                }
             } else if (jsonTempElement.isJsonObject) {
                 // if value is json object
                 val rustField = RustField(
