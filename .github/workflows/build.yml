@@ -38,10 +38,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: Release Test Github Action
+          release_name: Release Test Github Action
           body: Public Release
           draft: false
           prerelease: false
-          files: |
-            build/distributions/*.zip
+          files: build/distributions/*.zip
