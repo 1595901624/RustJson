@@ -1,5 +1,7 @@
 package com.rust.json.quick.rustjson
 
+import com.rust.json.quick.rustjson.rust.isDefaultRustKeyword
+
 data class RustStruct(
     /**
      * struct name
@@ -31,6 +33,11 @@ data class RustStruct(
      * convert to rust struct string
      */
     fun toRustStructString(): String {
+        // fix struct field name
+        fields.forEach {
+            it.fixedName = processFieldName(it.fixedName)
+        }
+
         val stringBuilder = StringBuilder()
         // add derive
         if (serde && debug) {
@@ -62,7 +69,7 @@ data class RustStruct(
                 stringBuilder.append("pub ")
             }
             // add field name
-            stringBuilder.append("${it.name.convertCamelToSnakeCase()}: ")
+            stringBuilder.append("${it.fixedName}: ")
             // add option
             if (option) {
                 stringBuilder.append("Option<")
@@ -89,6 +96,25 @@ data class RustStruct(
         stringBuilder.append("}\n")
         return stringBuilder.toString()
     }
+
+    /**
+     * process special field name
+     */
+    fun processFieldName(fieldName: String): String {
+        var tempName = fieldName.convertCamelToSnakeCase()
+
+        // if name is rust keyword, add "struct name" as prefix
+        if (tempName.isDefaultRustKeyword()) {
+            tempName = "${name.convertCamelToSnakeCase()}_$tempName"
+        }
+
+        // if name is duplicate, add "struct name" as prefix until not duplicate
+        while (fields.filter { it.fixedName == tempName }.size > 1) {
+            tempName = "${name.convertCamelToSnakeCase()}_$tempName"
+        }
+
+        return tempName
+    }
 }
 
 data class RustField(
@@ -103,7 +129,13 @@ data class RustField(
      * [objectName] is "Person" in "Person"
      */
     val objectName: String? = null
-)
+) {
+    /**
+     * if name is duplicate or rust default keywords, use [fixedName] instead of [name]
+     * when init this class, the [fixedName] is same as [name]
+     */
+    var fixedName: String = name
+}
 
 enum class RustType(val type: String = "") {
     Str("String"),

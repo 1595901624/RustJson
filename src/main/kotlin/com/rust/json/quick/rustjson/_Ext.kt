@@ -27,12 +27,14 @@ fun String.isSnakeCase(): Boolean {
  */
 fun String.convertCamelToSnakeCase(): String {
     val converted = StringBuilder()
-    for (ch in this) {
-        if (ch.isUpperCase()) {
-            converted.append('_')
-            converted.append(ch.lowercaseChar())
+    this.forEachIndexed { index, c ->
+        if (c.isUpperCase()) {
+            if (index != 0) {
+                converted.append('_')
+            }
+            converted.append(c.lowercaseChar())
         } else {
-            converted.append(ch)
+            converted.append(c)
         }
     }
     return converted.toString()
