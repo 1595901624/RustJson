@@ -19,7 +19,7 @@ jobs:
       - name: Set Test Version Variable
         id: set_version
         run: |
-          echo "release_version=$(grep -oP 'version = \"\K[^\"]+' test)" >> $GITHUB_ENV
+          echo "release_version=$(grep -oP 'version = \"\K[^\"]+' build.gradle.kts)" >> $GITHUB_ENV
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
