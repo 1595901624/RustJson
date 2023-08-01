@@ -25,3 +25,23 @@ jobs:
         run: |
           chmod +x ./gradlew
           ./gradlew buildPlugin
+
+      #      - name: Download artifact
+      #        uses: actions/download-artifact@v2
+      #        with:
+      #          name: build
+      #          path: build
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: Public Release
+          draft: false
+          prerelease: false
+          files: |
+            build/distributions/*.zip
