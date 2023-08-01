@@ -36,8 +36,8 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@master
         with:
-          tag_name: ${{ github.ref }}
-          name: Release ${{ github.ref }}
+          tag_name: Build ${{ github.run_number }}
+          name: Release ${{ github.run_number }}
           body: Public Release
           draft: false
           prerelease: false
