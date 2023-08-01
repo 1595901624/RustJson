@@ -38,8 +38,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: Release Test Github Action
-          release_name: Release Test Github Action
+          tag_name: ${{ github.ref }}
+          name: Release ${{ github.ref }}
           body: Public Release
           draft: false
           prerelease: false
