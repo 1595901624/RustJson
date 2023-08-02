@@ -16,19 +16,32 @@
 
     <description><![CDATA[
     <h1>Rust Json - Alpha Version (Preview)</h1>
-    <em>A Json to Rust Struct Idea Plugin. The plugin is still developing...</em><br>
+    <em>A Json to Rust Struct Idea Plugin.</em><br>
+    <p style="font-weight: bold;">NOTE: The current version is a test version, there may be some problems, welcome to put forward valuable suggestions.</p>
     <h2>Features</h2>
     <ul>
         <li>Support <code>debug</code> derive</li>
         <li>Support <code>serde</code> derive</li>
         <li>Support <code>serde</code> rename</li>
     </ul>
+    ## Screenshots
+
+    <h2>Screenshots</h2>
+    <div>
+        <img src="https://raw.githubusercontent.com/1595901624/RustJson/main/demo/screenshot1.png" height="50%" width="30%" >
+        <img src="https://raw.githubusercontent.com/1595901624/RustJson/main/demo/screenshot2.png" height="50%" width="30%">
+        <img src="https://raw.githubusercontent.com/1595901624/RustJson/main/demo/screenshot3.png" height="50%" width="30%">
+    </div>
+
     <h2>Usage</h2>
     <ol>
-        <li>Clone and Build the project</li>
-        <li>Install the plugin from local disk</li>
-        <li>Open a json file</li>
-        <li>Press <code>Alt + W</code> to open the window or right click to open the context menu and select <code>Generate Rust Struct</code></li>
+        <li>Open JetBrains IDE, such
+            as <code>IntelliJ IDEA</code> / <code>PyCharm</code> / <code>WebStorm</code> / <code>GoLand</code> / <code>CLion</code> / <code>Rider</code> / <code>DataGrip</code> / <code>RubyMine</code> / <code>PhpStorm</code> / <code>AppCode</code> / <code>Android Studio</code>
+            and so on.
+        </li>
+        <li>Settings -> Plugins -> Marketplace -> Search <code>RustJson</code> -> Install</li>
+        <li>Open any file</li>
+        <li>Press <code>Alt + W</code>  to open the window or right click to open the context menu and select <code>Generate Rust Struct</code></li>
         <li>Input Json text and press <code>OK</code></li>
     </ol>
     <h2>Feedback</h2>
@@ -36,6 +49,8 @@
     <h2>License</h2>
     <p>AGPLv3</p>
 ]]></description>
+
+    <change-notes>fix some bugs</change-notes>
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
