@@ -19,6 +19,7 @@ class JsonParseUtil(
             fields = mutableListOf(),
             serde = parseConfig.serdeDerive,
             public = parseConfig.publicStruct,
+            clone = parseConfig.cloneDerive,
             option = parseConfig.option,
             debug = parseConfig.debugDerive
         )
@@ -55,6 +56,7 @@ class JsonParseUtil(
             fields = mutableListOf(),
             serde = parseConfig.serdeDerive,
             public = parseConfig.publicStruct,
+            clone = parseConfig.cloneDerive,
             option = parseConfig.option,
             debug = parseConfig.debugDerive
         )

@@ -27,6 +27,7 @@ class JsonToRustDialog(
     private var checkBoxSerde: JCheckBox? = null
     private var checkBoxPublic: JCheckBox? = null
     private var checkBoxOption: JCheckBox? = null
+    private var checkBoxClone: JCheckBox? = null
 
     init {
         // set dialog title
@@ -38,7 +39,7 @@ class JsonToRustDialog(
         val screenHeight = screenSize.getHeight().toInt()
 
         val popupWidth = 600
-        val popupHeight = 400
+        val popupHeight = 500
 
         minimumSize = Dimension(popupWidth, popupHeight)
         setLocation(screenWidth / 2 - popupWidth / 2, screenHeight / 2 - popupHeight / 2)
@@ -86,6 +87,7 @@ class JsonToRustDialog(
                 val parseConfig = ParseConfig(
                     serdeDerive = checkBoxSerde!!.isSelected,
                     debugDerive = checkBoxDebug!!.isSelected,
+                    cloneDerive = checkBoxClone!!.isSelected,
                     publicStruct = checkBoxPublic!!.isSelected,
                     option = checkBoxOption!!.isSelected
                 )

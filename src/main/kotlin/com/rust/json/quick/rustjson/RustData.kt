@@ -27,7 +27,12 @@ data class RustStruct(
     /**
      * debug derive
      */
-    val debug: Boolean = true
+    val debug: Boolean = true,
+
+    /**
+     * clone derive
+     */
+    val clone: Boolean = false,
 ) {
 
     /**
@@ -41,15 +46,20 @@ data class RustStruct(
 
         val stringBuilder = StringBuilder()
         // add derive
-        if (serde && debug) {
+        if (serde && debug && clone) {
+            stringBuilder.append("#[derive(Serialize, Deserialize, Debug, Clone)]\n")
+        } else if (serde && debug) {
             stringBuilder.append("#[derive(Serialize, Deserialize, Debug)]\n")
-        } else {
-            if (serde) {
-                stringBuilder.append("#[derive(Serialize, Deserialize)]\n")
-            }
-            if (debug) {
-                stringBuilder.append("#[derive(Debug)]\n")
-            }
+        } else if (serde && clone) {
+            stringBuilder.append("#[derive(Serialize, Deserialize, Clone)]\n")
+        } else if (debug && clone) {
+            stringBuilder.append("#[derive(Debug, Clone)]\n")
+        } else if (serde) {
+            stringBuilder.append("#[derive(Serialize, Deserialize)]\n")
+        } else if (debug) {
+            stringBuilder.append("#[derive(Debug)]\n")
+        } else if (clone) {
+            stringBuilder.append("#[derive(Clone)]\n")
         }
         // add public
         if (public) {
