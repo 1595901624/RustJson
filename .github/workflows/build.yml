@@ -42,7 +42,7 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@master
         with:
-          tag_name: build${{ github.run_number }}
+          tag_name: v${{ env.release_version }}_build${{ github.run_number }}
           name: v${{ env.release_version }}
           body: Public Release
           draft: false
