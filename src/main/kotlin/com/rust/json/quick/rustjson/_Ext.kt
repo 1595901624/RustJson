@@ -3,6 +3,7 @@ package com.rust.json.quick.rustjson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonElement
 import com.google.gson.JsonParser
+import com.rust.json.quick.rustjson.rust.RUST_KEYWORDS
 
 /**
  * Capitalize the first letter of a string
@@ -50,4 +51,18 @@ fun String.formatJson(): String {
         return gson.toJson(jsonElement)
     }
     return this
+}
+
+/**
+ * is default rust keyword
+ */
+fun String.isDefaultRustKeyword(): Boolean {
+    return RUST_KEYWORDS.contains(this)
+}
+
+/**
+ * is digit
+ */
+fun String.isDigit(): Boolean {
+    return this.all { it.isDigit() }
 }

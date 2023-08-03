@@ -75,10 +75,3 @@ val RUST_KEYWORDS = hashSetOf(
     "'static",
     "union"
 )
-
-/**
- * is default rust keyword
- */
-fun String.isDefaultRustKeyword(): Boolean {
-    return RUST_KEYWORDS.contains(this)
-}

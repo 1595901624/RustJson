@@ -24,14 +24,6 @@
         <li>Support <code>serde</code> derive</li>
         <li>Support <code>serde</code> rename</li>
     </ul>
-    ## Screenshots
-
-    <h2>Screenshots</h2>
-    <div>
-        <img src="https://raw.githubusercontent.com/1595901624/RustJson/main/demo/screenshot1.png" height="50%" width="30%" >
-        <img src="https://raw.githubusercontent.com/1595901624/RustJson/main/demo/screenshot2.png" height="50%" width="30%">
-        <img src="https://raw.githubusercontent.com/1595901624/RustJson/main/demo/screenshot3.png" height="50%" width="30%">
-    </div>
 
     <h2>Usage</h2>
     <ol>

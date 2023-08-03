@@ -1,6 +1,7 @@
 package com.rust.json.quick.rustjson
 
-import com.rust.json.quick.rustjson.rust.isDefaultRustKeyword
+import java.math.BigDecimal
+import javax.print.attribute.IntegerSyntax
 
 data class RustStruct(
     /**
@@ -35,7 +36,7 @@ data class RustStruct(
     fun toRustStructString(): String {
         // fix struct field name
         fields.forEach {
-            it.fixedName = processFieldName(it.fixedName)
+            it.fixedName = processFieldName(it)
         }
 
         val stringBuilder = StringBuilder()
@@ -100,16 +101,20 @@ data class RustStruct(
     /**
      * process special field name
      */
-    fun processFieldName(fieldName: String): String {
-        var tempName = fieldName.convertCamelToSnakeCase()
+    fun processFieldName(field: RustField): String {
+        var tempName = field.fixedName.convertCamelToSnakeCase()
 
         // if name is rust keyword, add "struct name" as prefix
         if (tempName.isDefaultRustKeyword()) {
             tempName = "${name.convertCamelToSnakeCase()}_$tempName"
         }
 
+        if (tempName.isDigit()) {
+            tempName = "${name.convertCamelToSnakeCase()}_$tempName"
+        }
+
         // if name is duplicate, add "struct name" as prefix until not duplicate
-        while (fields.filter { it.fixedName == tempName }.size > 1) {
+        while (fields.filter { it.fixedName == tempName && it.hashCode() != field.hashCode() }.isNotEmpty()) {
             tempName = "${name.convertCamelToSnakeCase()}_$tempName"
         }
 
@@ -135,12 +140,26 @@ data class RustField(
      * when init this class, the [fixedName] is same as [name]
      */
     var fixedName: String = name
+
+    /**
+     * calculate hashCode
+     */
+    override fun hashCode(): Int {
+        val prime = 31
+        var result = 1
+        result = prime * result + name.hashCode()
+        result = prime * result + type.hashCode()
+        result = prime * result + public.hashCode()
+        result = prime * result + (objectName?.hashCode() ?: 0)
+        return result
+    }
 }
 
 enum class RustType(val type: String = "") {
     Str("String"),
     Integer32("i32"),
     Integer64("i64"),
+    Integer128("i128"),
     Float32("f32"),
     Float64("f64"),
     UnsignedInteger32("u32"),
@@ -152,3 +171,10 @@ enum class RustType(val type: String = "") {
     Vec("Vec"),
     Obj("")
 }
+
+val I32_MAX = BigDecimal("2147483647")
+val I32_MIN = BigDecimal("-2147483648")
+val I64_MAX = BigDecimal("9223372036854775807")
+val I64_MIN = BigDecimal("-9223372036854775808")
+val I128_MAX = BigDecimal("170141183460469231731687303715884105727")
+val I128_MIN = BigDecimal("-170141183460469231731687303715884105728")
