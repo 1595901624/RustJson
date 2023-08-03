@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.rust.json.quick"
-version = "0.0.6-Beta"
+version = "0.0.7.Beta"
 
 repositories {
     mavenCentral()
