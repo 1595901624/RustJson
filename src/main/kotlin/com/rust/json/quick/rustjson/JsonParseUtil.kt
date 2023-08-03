@@ -1,6 +1,7 @@
 package com.rust.json.quick.rustjson
 
 import com.google.gson.*
+import java.math.BigDecimal
 
 class JsonParseUtil(
     private val parseConfig: ParseConfig = ParseConfig()
@@ -188,6 +189,8 @@ class JsonParseUtil(
                     )
                     rustStruct.fields.add(rustField)
                 } else if (jsonPrimitive.isNumber) {
+                    // easy to handle, just use i32
+                    // todo: need to handle
                     val rustField = RustField(
                         name = keyName,
                         type = RustType.Vec,
@@ -239,12 +242,67 @@ class JsonParseUtil(
             )
             rustStruct.fields.add(rustField)
         } else if (valuePrimitive.isNumber) {
-            val rustField = RustField(
-                name = keyName,
-                type = RustType.Integer32,
-                public = parseConfig.publicStruct
-            )
-            rustStruct.fields.add(rustField)
+            try {
+                val input = valuePrimitive.asString
+                val numberValue = valuePrimitive.asDouble
+                // Judge whether it is an i32 or i64 type
+                if (!input.contains(".")) {
+                    val decimal = BigDecimal(numberValue)
+                    when (decimal) {
+                        in I32_MIN..I32_MAX -> {
+                            val rustField = RustField(
+                                name = keyName,
+                                type = RustType.Integer32,
+                                public = parseConfig.publicStruct
+                            )
+                            rustStruct.fields.add(rustField)
+                        }
+
+                        in I64_MIN..I64_MAX -> {
+                            val rustField = RustField(
+                                name = keyName,
+                                type = RustType.Integer64,
+                                public = parseConfig.publicStruct
+                            )
+                            rustStruct.fields.add(rustField)
+                        }
+
+                        in I128_MIN..I128_MAX -> {
+                            val rustField = RustField(
+                                name = keyName,
+                                type = RustType.Integer128,
+                                public = parseConfig.publicStruct
+                            )
+                            rustStruct.fields.add(rustField)
+                        }
+
+                        else -> {
+                            // Default to f64 type
+                            val rustField = RustField(
+                                name = keyName,
+                                type = RustType.Float64,
+                                public = parseConfig.publicStruct
+                            )
+                            rustStruct.fields.add(rustField)
+                        }
+                    }
+                } else {
+                    val rustField = RustField(
+                        name = keyName,
+                        type = RustType.Integer64,
+                        public = parseConfig.publicStruct
+                    )
+                    rustStruct.fields.add(rustField)
+                }
+            } catch (e: NumberFormatException) {
+                // Default to f64 type
+                val rustField = RustField(
+                    name = keyName,
+                    type = RustType.Float64,
+                    public = parseConfig.publicStruct
+                )
+                rustStruct.fields.add(rustField)
+            }
         } else if (valuePrimitive.isBoolean) {
             val rustField = RustField(
                 name = keyName,
