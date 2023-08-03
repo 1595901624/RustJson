@@ -4,11 +4,11 @@
     <p><b>A Json to Rust Struct Idea Plugin.</b></p>
     <img src="https://img.shields.io/badge/status-developing-green.svg?style=flat" />
     <a target="_blank" href="https://github.com/1595901624/RustJson/releases">
-      <img src="https://img.shields.io/badge/latest%20version-0.0.5.ALPHA-blue.svg?style=flat" />
+      <img src="https://img.shields.io/badge/latest%20version-v0.0.6.Beta-blue.svg?style=flat" />
     </a>
     <img src="https://img.shields.io/badge/license-AGPLv3-orange.svg?style=flat" />
     <a target="_blank" href="https://plugins.jetbrains.com/plugin/22393-rustjson">
-        <img src="https://img.shields.io/badge/JetbrainMarketPlace-v0.0.5.ALPHA-red.svg?style=flat" />
+        <img src="https://img.shields.io/badge/JetbrainMarketPlace-v0.0.6.Beta-red.svg?style=flat" />
     </a>
    <p>[English]<a href="README_CN.md"><span>[简体中文]</span></a></p>
 </div>
@@ -27,9 +27,9 @@ Convert Json to Rust Struct.
 ## Screenshots
 
 <div>
-   <img src="demo/screenshot1.png" height="50%" width="30%" >
-   <img src="demo/screenshot2.png" height="50%" width="30%">
-   <img src="demo/screenshot3.png" height="50%" width="30%">
+   <img src="demo/screenshot1.png" height="50%" width="40%" >
+   <img src="demo/screenshot2.png" height="50%" width="40%">
+   <img src="demo/screenshot3.png" height="50%" width="40%">
 </div>
 
 ## Usage

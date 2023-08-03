@@ -26,9 +26,9 @@
 ## 演示
 
 <div>
-   <img src="demo/screenshot1.png" height="50%" width="30%" >
-   <img src="demo/screenshot2.png" height="50%" width="30%">
-   <img src="demo/screenshot3.png" height="50%" width="30%">
+   <img src="demo/screenshot1.png" height="50%" width="40%" >
+   <img src="demo/screenshot2.png" height="50%" width="40%">
+   <img src="demo/screenshot3.png" height="50%" width="40%">
 </div>
 
 ## 使用方法
