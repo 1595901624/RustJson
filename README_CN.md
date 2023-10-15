@@ -4,16 +4,14 @@
     <p><b>一个 Json 转 Rust Struct 的 Idea 插件.</b></p>
     <img src="https://img.shields.io/badge/status-developing-green.svg?style=flat" />
     <a target="_blank" href="https://github.com/1595901624/RustJson/releases">
-      <img src="https://img.shields.io/badge/latest%20version-0.0.5.ALPHA-blue.svg?style=flat" />
+      <img src="https://img.shields.io/badge/latest%20version-1.0.0-blue.svg?style=flat" />
     </a>
     <img src="https://img.shields.io/badge/license-AGPLv3-orange.svg?style=flat" />
     <a target="_blank" href="https://plugins.jetbrains.com/plugin/22393-rustjson">
-        <img src="https://img.shields.io/badge/JetbrainMarketPlace-v0.0.5.ALPHA-red.svg?style=flat" />
+        <img src="https://img.shields.io/badge/JetbrainMarketPlace-v1.0.0-red.svg?style=flat" />
     </a>
    <p><a href="README.md"><span>[English]</a>[简体中文]</span></p>
 </div>
-
-注意: 当前版本为测试版本，可能存在一些问题，欢迎提出宝贵的建议。
 
 ## 特性
 
@@ -22,7 +20,7 @@
 * 支持 `debug` 派生
 * 支持 `serde` 派生
 * 支持 `serde` 重命名
-
+* 新增支持 `RustRover`
 ## 演示
 
 <div>
@@ -33,7 +31,7 @@
 
 ## 使用方法
 
-1. 打开 JetBrains IDE, 例如 `IntelliJ IDEA` / `PyCharm` / `WebStorm` / `GoLand` / `CLion` / `Rider` / `DataGrip` / `RubyMine` / `PhpStorm` / `AppCode` / `Android Studio` 等等。
+1. 打开 JetBrains IDE, 例如 `IntelliJ IDEA` / `PyCharm` / `WebStorm` / `GoLand` / `CLion` / `Rider` / `DataGrip` / `RubyMine` / `PhpStorm` / `AppCode` / `Android Studio` / `RustRover` 等等。
 2. 设置 -> 插件 -> 市场 -> 搜索 `RustJson` -> 安装
 3. 打开任意文件
 4. 按下 `Alt + W` 打开窗口或右键打开上下文菜单并选择 `Generate Rust Struct`

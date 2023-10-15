@@ -15,21 +15,21 @@
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
 
     <description><![CDATA[
-    <h1>Rust Json - Alpha Version (Preview)</h1>
-    <em>A Json to Rust Struct Idea Plugin.</em><br>
-    <p style="font-weight: bold;">NOTE: The current version is a test version, there may be some problems, welcome to put forward valuable suggestions.</p>
+    <h1>Rust Json</h1>
+    <p style="font-weight: bold;">A Json to Rust Struct Idea Plugin.</p>
     <h2>Features</h2>
     <ul>
         <li>Support <code>debug</code> derive</li>
         <li>Support <code>serde</code> derive</li>
         <li>Support <code>serde</code> rename</li>
+        <li>Support RustRover</li>
     </ul>
 
     <h2>Usage</h2>
     <ol>
         <li>Open JetBrains IDE, such
             as <code>IntelliJ IDEA</code> / <code>PyCharm</code> / <code>WebStorm</code> / <code>GoLand</code> / <code>CLion</code> / <code>Rider</code> / <code>DataGrip</code> / <code>RubyMine</code> / <code>PhpStorm</code> / <code>AppCode</code> / <code>Android Studio</code>
-            and so on.
+            / <code>RustRover</code> and so on.
         </li>
         <li>Settings -> Plugins -> Marketplace -> Search <code>RustJson</code> -> Install</li>
         <li>Open any file</li>
