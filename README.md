@@ -44,9 +44,11 @@ Convert Json to Rust Struct.
 
 And you can also give me a cup of coffee by scanning the QR code below.
 
-| Paypal                                                  | Wechat                                     | Alipay/AlipayHK                            |
-|---------------------------------------------------------|--------------------------------------------|--------------------------------------------|
-| [**`Paypal`**](https://www.paypal.com/paypalme/haoyu94) | <img src="demo/wechat.jpg" height="180" /> | <img src="demo/alipay.jpg" height="180" /> |
+
+| BuyMeACoffee                                                 | Wechat/Wechat HK                                             | Alipay/AlipayHK                                              | Paypal                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------- |
+| <a target="_blank" href="https://www.buymeacoffee.com/hycloris"><img src="https://raw.githubusercontent.com/1595901624/RustJson-vscode/main/demo/bmc_qr.png" height="180" /></a> | <img src="https://raw.githubusercontent.com/1595901624/RustJson-vscode/main/demo/wechat.jpeg" height="180" /> | <img src="https://raw.githubusercontent.com/1595901624/RustJson-vscode/main/demo/alipay.jpeg" height="180" /> | [**`Paypal`**](https://www.paypal.com/paypalme/haoyu94) |
+
 
 ## For Developer
 
