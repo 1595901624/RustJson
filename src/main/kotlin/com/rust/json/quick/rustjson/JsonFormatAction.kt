@@ -3,14 +3,6 @@ package com.rust.json.quick.rustjson
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
-import com.intellij.openapi.project.Project
-import com.intellij.openapi.ui.popup.IconButton
-import com.intellij.openapi.ui.popup.JBPopupFactory
-import com.intellij.ui.awt.RelativePoint
-import com.intellij.util.ui.JBImageIcon
-import java.awt.Dimension
-import java.awt.Point
-import java.awt.Toolkit
 
 
 class JsonFormatAction : AnAction() {

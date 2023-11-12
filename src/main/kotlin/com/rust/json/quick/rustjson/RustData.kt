@@ -1,7 +1,6 @@
 package com.rust.json.quick.rustjson
 
 import java.math.BigDecimal
-import javax.print.attribute.IntegerSyntax
 
 data class RustStruct(
     /**
@@ -111,7 +110,7 @@ data class RustStruct(
     /**
      * process special field name
      */
-    fun processFieldName(field: RustField): String {
+    private fun processFieldName(field: RustField): String {
         var tempName = field.fixedName.convertCamelToSnakeCase()
 
         // if name is rust keyword, add "struct name" as prefix
@@ -124,7 +123,7 @@ data class RustStruct(
         }
 
         // if name is duplicate, add "struct name" as prefix until not duplicate
-        while (fields.filter { it.fixedName == tempName && it.hashCode() != field.hashCode() }.isNotEmpty()) {
+        while (fields.any { it.fixedName == tempName && it.hashCode() != field.hashCode() }) {
             tempName = "${name.convertCamelToSnakeCase()}_$tempName"
         }
 
@@ -163,8 +162,24 @@ data class RustField(
         result = prime * result + (objectName?.hashCode() ?: 0)
         return result
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as RustField
+
+        if (name != other.name) return false
+        if (type != other.type) return false
+        if (public != other.public) return false
+        if (objectName != other.objectName) return false
+        if (fixedName != other.fixedName) return false
+
+        return true
+    }
 }
 
+@Suppress("unused")
 enum class RustType(val type: String = "") {
     Str("String"),
     Integer32("i32"),

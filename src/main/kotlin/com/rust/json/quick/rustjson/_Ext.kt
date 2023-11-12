@@ -12,16 +12,16 @@ fun String.toCapitalizeFirstLetter(): String {
     return this.substring(0, 1).uppercase() + this.substring(1)
 }
 
-/**
- * Judge whether a string is camel case
- */
-fun String.isSnakeCase(): Boolean {
-    if (this.any { it.isUpperCase() || it.isWhitespace() }) {
-        return false
-    }
-
-    return !this.any { !it.isLetterOrDigit() && it != '_' }
-}
+///**
+// * Judge whether a string is camel case
+// */
+//fun String.isSnakeCase(): Boolean {
+//    if (this.any { it.isUpperCase() || it.isWhitespace() }) {
+//        return false
+//    }
+//
+//    return !this.any { !it.isLetterOrDigit() && it != '_' }
+//}
 
 /**
  * Convert CamelCase to snake_case

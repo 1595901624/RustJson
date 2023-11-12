@@ -70,34 +70,12 @@ class JsonParseUtil(
                 // if value is json primitive
                 val jsonPrimitive = it.value.asJsonPrimitive
                 parseJsonPrimitive(it.key, jsonPrimitive, rustStruct)
-//                if (jsonPrimitive.isString) {
-//                    val rustField = RustField(
-//                        name = it.key,
-//                        type = RustType.Str,
-//                        public = true
-//                    )
-//                    rustStruct.fields.add(rustField)
-//                } else if (jsonPrimitive.isNumber) {
-//                    val rustField = RustField(
-//                        name = it.key,
-//                        type = RustType.Integer32,
-//                        public = true
-//                    )
-//                    rustStruct.fields.add(rustField)
-//                } else if (jsonPrimitive.isBoolean) {
-//                    val rustField = RustField(
-//                        name = it.key,
-//                        type = RustType.Bool,
-//                        public = true
-//                    )
-//                    rustStruct.fields.add(rustField)
-//                }
             } else if (it.value.isJsonObject) {
                 // if value is json object
                 val rustField = RustField(
                     name = it.key,
                     type = RustType.Obj,
-                    public = parseConfig.publicStruct,
+                    public = parseConfig.publicField,
                     objectName = it.key.toCapitalizeFirstLetter()
                 )
                 rustStruct.fields.add(rustField)
@@ -171,7 +149,7 @@ class JsonParseUtil(
             val rustField = RustField(
                 name = keyName,
                 type = RustType.Vec,
-                public = parseConfig.publicStruct,
+                public = parseConfig.publicField,
                 objectName = "String"
             )
             rustStruct.fields.add(rustField)
@@ -186,7 +164,7 @@ class JsonParseUtil(
                     val rustField = RustField(
                         name = keyName,
                         type = RustType.Vec,
-                        public = true,
+                        public = parseConfig.publicField,
                         objectName = "String"
                     )
                     rustStruct.fields.add(rustField)
@@ -196,7 +174,7 @@ class JsonParseUtil(
                     val rustField = RustField(
                         name = keyName,
                         type = RustType.Vec,
-                        public = true,
+                        public = parseConfig.publicField,
                         objectName = "i32"
                     )
                     rustStruct.fields.add(rustField)
@@ -204,7 +182,7 @@ class JsonParseUtil(
                     val rustField = RustField(
                         name = keyName,
                         type = RustType.Vec,
-                        public = true,
+                        public = parseConfig.publicField,
                         objectName = "bool"
                     )
                     rustStruct.fields.add(rustField)
@@ -214,7 +192,7 @@ class JsonParseUtil(
                 val rustField = RustField(
                     name = keyName,
                     type = RustType.Vec,
-                    public = parseConfig.publicStruct,
+                    public = parseConfig.publicField,
                     objectName = keyName.toCapitalizeFirstLetter()
                 )
                 rustStruct.fields.add(rustField)
@@ -240,7 +218,7 @@ class JsonParseUtil(
             val rustField = RustField(
                 name = keyName,
                 type = RustType.Str,
-                public = parseConfig.publicStruct
+                public = parseConfig.publicField
             )
             rustStruct.fields.add(rustField)
         } else if (valuePrimitive.isNumber) {
@@ -255,7 +233,7 @@ class JsonParseUtil(
                             val rustField = RustField(
                                 name = keyName,
                                 type = RustType.Integer32,
-                                public = parseConfig.publicStruct
+                                public = parseConfig.publicField
                             )
                             rustStruct.fields.add(rustField)
                         }
@@ -264,7 +242,7 @@ class JsonParseUtil(
                             val rustField = RustField(
                                 name = keyName,
                                 type = RustType.Integer64,
-                                public = parseConfig.publicStruct
+                                public = parseConfig.publicField
                             )
                             rustStruct.fields.add(rustField)
                         }
@@ -273,7 +251,7 @@ class JsonParseUtil(
                             val rustField = RustField(
                                 name = keyName,
                                 type = RustType.Integer128,
-                                public = parseConfig.publicStruct
+                                public = parseConfig.publicField
                             )
                             rustStruct.fields.add(rustField)
                         }
@@ -283,7 +261,7 @@ class JsonParseUtil(
                             val rustField = RustField(
                                 name = keyName,
                                 type = RustType.Float64,
-                                public = parseConfig.publicStruct
+                                public = parseConfig.publicField
                             )
                             rustStruct.fields.add(rustField)
                         }
@@ -292,7 +270,7 @@ class JsonParseUtil(
                     val rustField = RustField(
                         name = keyName,
                         type = RustType.Integer64,
-                        public = parseConfig.publicStruct
+                        public = parseConfig.publicField
                     )
                     rustStruct.fields.add(rustField)
                 }
@@ -301,7 +279,7 @@ class JsonParseUtil(
                 val rustField = RustField(
                     name = keyName,
                     type = RustType.Float64,
-                    public = parseConfig.publicStruct
+                    public = parseConfig.publicField
                 )
                 rustStruct.fields.add(rustField)
             }
@@ -309,7 +287,7 @@ class JsonParseUtil(
             val rustField = RustField(
                 name = keyName,
                 type = RustType.Bool,
-                public = parseConfig.publicStruct
+                public = parseConfig.publicField
             )
             rustStruct.fields.add(rustField)
         }

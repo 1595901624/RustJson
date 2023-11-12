@@ -9,8 +9,11 @@ import com.intellij.psi.PsiFile
 import com.intellij.psi.PsiFileFactory
 import java.awt.Dimension
 import java.awt.Toolkit
-import javax.swing.*;
-import java.awt.event.*;
+import java.awt.event.KeyEvent
+import java.awt.event.WindowAdapter
+import java.awt.event.WindowEvent
+import java.util.regex.Pattern
+import javax.swing.*
 
 /**
  * Json To Rust Struct Dialog
@@ -25,7 +28,8 @@ class JsonToRustDialog(
     private var jsonEditorTextArea: JTextArea? = null
     private var checkBoxDebug: JCheckBox? = null
     private var checkBoxSerde: JCheckBox? = null
-    private var checkBoxPublic: JCheckBox? = null
+    private var checkBoxStructPublic: JCheckBox? = null
+    private var checkBoxFieldPublic: JCheckBox? = null
     private var checkBoxOption: JCheckBox? = null
     private var checkBoxClone: JCheckBox? = null
 
@@ -70,7 +74,7 @@ class JsonToRustDialog(
         // call onCancel() on ESCAPE
         contentPane?.registerKeyboardAction({
             onCancel()
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT)
     }
 
     private fun onOK() {
@@ -88,7 +92,8 @@ class JsonToRustDialog(
                     serdeDerive = checkBoxSerde!!.isSelected,
                     debugDerive = checkBoxDebug!!.isSelected,
                     cloneDerive = checkBoxClone!!.isSelected,
-                    publicStruct = checkBoxPublic!!.isSelected,
+                    publicStruct = checkBoxStructPublic!!.isSelected,
+                    publicField = checkBoxFieldPublic!!.isSelected,
                     option = checkBoxOption!!.isSelected
                 )
                 val list = JsonParseUtil(parseConfig).parse(jsonString)
@@ -98,11 +103,17 @@ class JsonToRustDialog(
                     codeStringBuilder.append(rustStruct.toRustStructString())
                 }
 
+                // insert import `use` code
+                var importUseCode = ""
+                if (parseConfig.serdeDerive) {
+                    importUseCode = insertImportUseCode(file.text)
+                }
+
                 // insert code to file
                 val newFile = PsiFileFactory.getInstance(event.project)
                     .createFileFromText(
                         PlainTextLanguage.INSTANCE,
-                        file.text + "\n" + codeStringBuilder.toString()
+                        importUseCode + file.text + "\n" + codeStringBuilder.toString()
                     )
                 // get workspace current file editor
                 val currentEditor = event.getData<Editor>(CommonDataKeys.EDITOR)
@@ -127,6 +138,34 @@ class JsonToRustDialog(
             val formatJson = json.formatJson()
             jsonEditorTextArea?.text = formatJson
         }
+    }
+
+    private fun insertImportUseCode(fileText: String): String {
+        val regex1 = """use serde::.*Serialize.*Deserialize.*"""
+        val regex2 = """use serde::.*Deserialize.*Serialize.*"""
+        val regex3 = """use serde::.*Serialize.*"""
+        val regex4 = """use serde::.*Deserialize.*"""
+        val pattern1 = Pattern.compile(regex1)
+        val pattern2 = Pattern.compile(regex2)
+        val pattern3 = Pattern.compile(regex3)
+        val pattern4 = Pattern.compile(regex4)
+
+        if (pattern1.matcher(fileText).find()) {
+            return ""
+        }
+        if (pattern2.matcher(fileText).find()) {
+            return ""
+        }
+        if (pattern3.matcher(fileText).find() && pattern4.matcher(fileText).find()) {
+            return ""
+        }
+        if (pattern3.matcher(fileText).find() && !pattern4.matcher(fileText).find()) {
+            return "use serde::Deserialize;\n"
+        }
+        if (!pattern3.matcher(fileText).find() && pattern4.matcher(fileText).find()) {
+            return "use serde::Serialize;\n"
+        }
+        return "use serde::{Serialize, Deserialize};\n"
     }
 
 }

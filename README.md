@@ -4,11 +4,11 @@
     <p><b>A Json to Rust Struct Idea Plugin.</b></p>
     <img src="https://img.shields.io/badge/status-developing-green.svg?style=flat" />
     <a target="_blank" href="https://github.com/1595901624/RustJson/releases">
-      <img src="https://img.shields.io/badge/latest%20version-v1.0.0-blue.svg?style=flat" />
+      <img src="https://img.shields.io/badge/latest%20version-v1.1.0-blue.svg?style=flat" />
     </a>
     <img src="https://img.shields.io/badge/license-AGPLv3-orange.svg?style=flat" />
     <a target="_blank" href="https://plugins.jetbrains.com/plugin/22393-rustjson">
-        <img src="https://img.shields.io/badge/JetbrainMarketPlace-v1.0.0-red.svg?style=flat" />
+        <img src="https://img.shields.io/badge/JetbrainMarketPlace-v1.1.0-red.svg?style=flat" />
     </a>
    <p>[English]<a href="README_CN.md"><span>[简体中文]</span></a></p>
 </div>
@@ -18,9 +18,12 @@
 Convert Json to Rust Struct.
 
 * Support `debug` derive
+* Support `clone` derive
 * Support `serde` derive
 * Support `serde` rename
 * Support `RustRover`
+* Support Offline use
+* Auto import `serde` and `serde_json` crate
 
 ## Screenshots
 
@@ -40,9 +43,9 @@ Convert Json to Rust Struct.
 4. Press `Alt + W`  to open the window or right click to open the context menu and select `Generate Rust Struct`
 5. Input Json text and press `OK`
 
-## Give me a Cup of Coffee
+## Buy me a Cup of Coffee
 
-And you can also give me a cup of coffee by scanning the QR code below.
+And you can also buy me a cup of coffee by scanning the QR code below.
 
 
 | BuyMeACoffee                                                 | Wechat/Wechat HK                                             | Alipay/AlipayHK                                              | Paypal                                                  |

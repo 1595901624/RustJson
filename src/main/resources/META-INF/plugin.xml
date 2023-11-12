@@ -20,15 +20,18 @@
     <h2>Features</h2>
     <ul>
         <li>Support <code>debug</code> derive</li>
+        <li>Support <code>clone</code> derive</li>
         <li>Support <code>serde</code> derive</li>
         <li>Support <code>serde</code> rename</li>
         <li>Support RustRover</li>
+        <li>Support Offline use</li>
+        <li>Auto import `serde` and `serde_json` crate</li>
     </ul>
 
     <h2>Usage</h2>
     <ol>
         <li>Open JetBrains IDE, such
-            as <code>IntelliJ IDEA</code> / <code>PyCharm</code> / <code>WebStorm</code> / <code>GoLand</code> / <code>CLion</code> / <code>Rider</code> / <code>DataGrip</code> / <code>RubyMine</code> / <code>PhpStorm</code> / <code>AppCode</code> / <code>Android Studio</code>
+            as <<code><Inte></Inte></code>lliJ IDEA</code> / <code>PyCharm</code> / <code>WebStorm</code> / <code>GoLand</code> / <code>CLion</code> / <code>Rider</code> / <code>DataGrip</code> / <code>RubyMine</code> / <code>PhpStorm</code> / <code>AppCode</code> / <code>Android Studio</code>
             / <code>RustRover</code> and so on.
         </li>
         <li>Settings -> Plugins -> Marketplace -> Search <code>RustJson</code> -> Install</li>
@@ -36,13 +39,30 @@
         <li>Press <code>Alt + W</code>  to open the window or right click to open the context menu and select <code>Generate Rust Struct</code></li>
         <li>Input Json text and press <code>OK</code></li>
     </ol>
+
+    <h2>Buy me a coffee</h2>
+    <p>If you like this plugin, you can buy me a coffee.</p>
+    <table>
+        <tr>
+            <td><img src="https://raw.githubusercontent.com/1595901624/RustJson-vscode/main/demo/bmc_qr.png" height="180" /></td>
+            <td><img src="https://raw.githubusercontent.com/1595901624/RustJson-vscode/main/demo/wechat.jpeg" height="180" /></td>
+            <td><img src="https://raw.githubusercontent.com/1595901624/RustJson-vscode/main/demo/alipay.jpeg" height="180" /></td>
+        </tr>
+        <tr>
+            <td>BuyMeACoffee</td>
+            <td>Wechat/Wechat HK</td>
+            <td>Alipay/AlipayHK</td>
+        </tr>
+
     <h2>Feedback</h2>
-    <p>If you have any questions, please submit an issue on <a href="https://github.com/1595901624/RustJson">Github</a>. </p>
+    <p>If you have any questions, please submit an issue on <a href="https://github.com/1595901624/RustJson">Github</a>. And you can also follow my WeChat Official Account by scanning the QR
+code below.</p>
+    <img src="https://raw.githubusercontent.com/1595901624/RustJson-vscode/main/demo/qrcode.jpg" width="30%">
     <h2>License</h2>
     <p>AGPLv3</p>
 ]]></description>
 
-    <change-notes>fix some bugs</change-notes>
+    <change-notes>Auto import `serde` and `serde_json` crate</change-notes>
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
