@@ -4,9 +4,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.command.WriteCommandAction
 import com.intellij.openapi.editor.Editor
-import com.intellij.openapi.fileTypes.PlainTextLanguage
 import com.intellij.psi.PsiFile
-import com.intellij.psi.PsiFileFactory
 import java.awt.Dimension
 import java.awt.Toolkit
 import java.awt.event.KeyEvent
@@ -32,6 +30,7 @@ class JsonToRustDialog(
     private var checkBoxFieldPublic: JCheckBox? = null
     private var checkBoxOption: JCheckBox? = null
     private var checkBoxClone: JCheckBox? = null
+    private var checkBoxRename: JCheckBox? = null
 
     init {
         // set dialog title
@@ -94,7 +93,8 @@ class JsonToRustDialog(
                     cloneDerive = checkBoxClone!!.isSelected,
                     publicStruct = checkBoxStructPublic!!.isSelected,
                     publicField = checkBoxFieldPublic!!.isSelected,
-                    option = checkBoxOption!!.isSelected
+                    option = checkBoxOption!!.isSelected,
+                    renameMacro = checkBoxRename!!.isSelected
                 )
                 val list = JsonParseUtil(parseConfig).parse(jsonString)
                 // generate rust code
@@ -110,18 +110,20 @@ class JsonToRustDialog(
                 }
 
                 // insert code to file
-                val newFile = PsiFileFactory.getInstance(event.project)
-                    .createFileFromText(
-                        PlainTextLanguage.INSTANCE,
-                        importUseCode + file.text + "\n" + codeStringBuilder.toString()
-                    )
+//                val newFile = PsiFileFactory.getInstance(event.project)
+//                    .createFileFromText(
+//                        PlainTextLanguage.INSTANCE,
+//                        importUseCode + file.text + "\n" + codeStringBuilder.toString()
+//                    )
                 // get workspace current file editor
                 val currentEditor = event.getData<Editor>(CommonDataKeys.EDITOR)
                     ?: return@Runnable
                 // refresh workspace editor
-                currentEditor.document.setText(newFile.text)
+//                currentEditor.document.setText(newFile.text)
+                currentEditor.document.insertString(0, importUseCode)
+                currentEditor.document.insertString(currentEditor.caretModel.offset, codeStringBuilder.toString())
                 currentEditor.selectionModel.removeSelection()
-                currentEditor.caretModel.moveToOffset(0)
+//                currentEditor.caretModel.moveToOffset(0)
             }
 
             dispose()

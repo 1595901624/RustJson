@@ -9,5 +9,6 @@ data class ParseConfig(
     val cloneDerive: Boolean = true,
     val publicStruct: Boolean = true,
     val publicField: Boolean = true,
-    val option: Boolean = true
+    val option: Boolean = true,
+    val renameMacro: Boolean = false
 )

@@ -21,7 +21,8 @@ class JsonParseUtil(
             public = parseConfig.publicStruct,
             clone = parseConfig.cloneDerive,
             option = parseConfig.option,
-            debug = parseConfig.debugDerive
+            debug = parseConfig.debugDerive,
+            rename = parseConfig.renameMacro
         )
         if (jsonElement.isJsonObject) {
             parseJsonObject(jsonElement, "Root", list)
@@ -58,7 +59,8 @@ class JsonParseUtil(
             public = parseConfig.publicStruct,
             clone = parseConfig.cloneDerive,
             option = parseConfig.option,
-            debug = parseConfig.debugDerive
+            debug = parseConfig.debugDerive,
+            rename = parseConfig.renameMacro
         )
         // get json object
         val jsonObject = jsonElement as JsonObject

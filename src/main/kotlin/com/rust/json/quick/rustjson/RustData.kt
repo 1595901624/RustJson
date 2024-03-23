@@ -32,6 +32,11 @@ data class RustStruct(
      * clone derive
      */
     val clone: Boolean = false,
+
+    /**
+     * rename macro
+     */
+    val rename: Boolean = false,
 ) {
 
     /**
@@ -69,8 +74,8 @@ data class RustStruct(
         // add fields
         fields.forEachIndexed { index, it ->
             stringBuilder.append("\t")
-            // add serde
-            if (serde) {
+            // add rename
+            if (rename) {
                 stringBuilder.append("#[serde(rename = \"${it.name}\")]\n")
                 stringBuilder.append("\t")
             }
