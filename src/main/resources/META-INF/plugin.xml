@@ -62,7 +62,7 @@ code below.</p>
     <p>AGPLv3</p>
 ]]></description>
 
-    <change-notes>Auto import `serde` and `serde_json` crate</change-notes>
+    <change-notes>Add option "rename macro" and insert code from caret position</change-notes>
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
